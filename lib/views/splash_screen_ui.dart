@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_body_health_calculator_project/views/home_ui.dart';
+
+class SplashScreenUi extends StatefulWidget {
+  const SplashScreenUi({super.key});
+
+  @override
+  State<SplashScreenUi> createState() => _SplashScreenUiState();
+}
+
+class _SplashScreenUiState extends State<SplashScreenUi> {
+
+  @override
+  void initState() {
+    // หน่วงหน้าจอไว้ 3 วิ ไปหน้า home แบบย้อนกลับไม่ได้
+    Future.delayed(
+      Duration(
+        seconds: 3,
+      ),
+      (){
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeUi(),
+          ),
+        );
+      }
+    );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.deepOrange[700],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/calculate.png',
+              width: MediaQuery.of(context).size.height * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              fit: BoxFit.cover,
+            ),
+            Container(
+              height: 50,
+            ),
+            Text(
+              'Body Health Calculate',
+              style: TextStyle(
+                fontSize: MediaQuery.of(context).size.height * 0.025,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            Container(
+              height: 50,
+            ),
+            CircularProgressIndicator(
+              color: Colors.white,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
